@@ -1,44 +1,99 @@
-/*O PROGRAMA TEM COMO OBJETIVO APRESENTAR OS SEGUINTES CONCEITOS: 
-ABSTRAÇÃO, DEFINIÇÃO DE VARIÁVEIS, SAÍDA DE DADOS E ENTRADA DE DADOS*/
 
 package clinica;
 
-//IMPORTAÇÃO DA CLASSE SCANNER
+//IMPORTANDO A CLASSE SCANNER
 import java.util.Scanner;
 
+//CLASSE MEDICOS
 public class Medicos {
     
-    //MÉTODO PRINCIPAL
+    //METODO PRINCIPAL
     public static void main(String[] args) {
         
-        //ATRIBUTOS DEFINIDOS
+        //ATRIBUIÇÃO DE VARIAVEIS
         String nome_medicos;
         String crm_medicos;
         String especialidade_medicos;
         int admissao_medicos;
         double salario_medicos;
+        double reajuste_medicos = 0;
+        int controle;
         
-        //ENTRADA DE DADOS COM A CLASSE SCANNER
-        Scanner ler = new Scanner(System.in);
-        System.out.println("Digite o nome do(a) Médico(a): ");
-        nome_medicos = ler.nextLine(); //NEXTLINE PARA STRINGS
-        System.out.println("Digite o CRM do(a) Médico(a): ");
-        crm_medicos = ler.nextLine();
-        System.out.println("Digite a Especialidade do(a) Médico(a): ");
-        especialidade_medicos = ler.nextLine();
-        System.out.println("Digite o ano de Admissão do(a) Médico(a): ");
-        admissao_medicos = ler.nextInt(); //NEXTINT PARA INTEIROS
-        System.out.println("Digite o salário do(a) Médico(a): ");
-        salario_medicos = ler.nextDouble(); //NEXTDOUBLE PARA DOUBLE
+        Scanner a = new Scanner (System.in);
+        System.out.print("SEJA BEM VINDO AO SISTEMA DE GESTÃO DE MÉDICOS" + "\n" +
+               "Digite 1 para iniciar o sistema: ");
+        controle = a.nextInt();
         
-        //SAÍDA DE DADOS COM O MÉTODO SYSTEM.OUT.PRINT
-        System.out.println("Médico(a): "         + nome_medicos          + "\n" +
-                           "CRM: "               + crm_medicos           + "\n" +
-                           "Especialidade: "     + especialidade_medicos + "\n" +
-                           "Ano de Admissão: "   + admissao_medicos      + "\n" +
-                           "Salário :"           + salario_medicos       + "\n");
+        if (controle == 1) {
+            
+            //ENTRADA DE DADOS
+            Scanner ler = new Scanner (System.in);
+            System.out.print("Digite o nome do Médico(a): ");
+            nome_medicos = ler.nextLine();
+            System.out.print("Digite o crm do Médico(a): ");
+            crm_medicos = ler.nextLine();
+            System.out.print("Digite a especialidade do Médico(a): ");
+            especialidade_medicos = ler.nextLine();
+            System.out.print("Digite o ano de admissão do Médico(a): ");
+            admissao_medicos = ler.nextInt();
+            System.out.print("Digite o salário do Médico(a): ");
+            salario_medicos = ler.nextDouble();
+
+            while (salario_medicos<0){
+
+               System.out.print("Valor inválido, "
+                       + "Digite novamente o salário do Médico(a): ");
+               salario_medicos = ler.nextDouble(); 
+
+
+            }
+
+            //ESTRUTURA DE CONDIÇÃO
+            if (salario_medicos>=2000){
+
+                reajuste_medicos = salario_medicos * 1.2;
+
+
+            }
+
+            else if(salario_medicos>=1000 && salario_medicos<2000){
+
+                 reajuste_medicos = salario_medicos * 1.1;
+
+            }
+
+            else if (salario_medicos>0 && salario_medicos<1000){
+
+                reajuste_medicos = salario_medicos * 1.05;
+
+            }
+
+            else{
+
+               reajuste_medicos = salario_medicos;
+
+            }
+
+
+
+            //SAIDA DE DADOS
+            System.out.println("Médico(a): " + nome_medicos + "\n" +
+                               "CRM: " + crm_medicos + "\n" +
+                               "Especialidade: " + especialidade_medicos + "\n" +
+                               "Ano de Admissão: " + admissao_medicos +"\n" +
+                                "Salário :" + salario_medicos + "\n" +
+                                "Reajuste Salarial: " + reajuste_medicos);
+
+            
+        } else {
+            
+            System.exit(0);
+            
+        }
+        
+        
+        
        
-        
     }
     
 }
