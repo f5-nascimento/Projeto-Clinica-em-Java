@@ -18,13 +18,54 @@ public class Medicos {
         double salario_medicos;
         double reajuste_medicos = 0;
         int controle;
+        String usuario;
+        String senha;
+        int i;
+        
+        
+        Scanner acesso = new Scanner (System.in);
+        System.out.print("Digite o seu login de acesso: ");
+        usuario = acesso.nextLine();
+        System.out.print("Digite a sua senha de acesso: ");
+        senha = acesso.nextLine();
+        
+        while (!"admin".equals(usuario) && !"admin".equals(senha)){
+            
+            
+            for (i = 3; i>0; i--){
+                
+                System.out.println("Usuário ou Senha Inválida " + i + 
+                           " tentativas");
+                System.out.print("Usuário: ");
+                usuario = acesso.nextLine();
+                System.out.print("Senha: ");
+                senha = acesso.nextLine();
+                
+                if ("admin".equals(usuario) && "admin".equals(senha)){
+                    
+                    break;
+                    
+                }
+                
+           
+                
+            }
+            
+             if (i == 0){
+                    
+                    System.out.println("Acesso Negado");
+                    System.exit(0);
+                    
+                }
+            
+        }
         
         Scanner a = new Scanner (System.in);
         System.out.print("SEJA BEM VINDO AO SISTEMA DE GESTÃO DE MÉDICOS" + "\n" +
                "Digite 1 para iniciar o sistema: ");
         controle = a.nextInt();
         
-        if (controle == 1) {
+        while (controle == 1) {
             
             //ENTRADA DE DADOS
             Scanner ler = new Scanner (System.in);
@@ -85,13 +126,12 @@ public class Medicos {
                                 "Reajuste Salarial: " + reajuste_medicos);
 
             
-        } else {
+             System.out.println(" ");
+             System.out.print("Digite 1 para cadastrar novo médico: ");
+             controle = ler.nextInt();
             
-            System.exit(0);
             
-        }
-        
-        
+        } 
         
        
     }
